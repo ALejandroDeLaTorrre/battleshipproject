@@ -63,6 +63,7 @@ var gameBoard = [
 				[1,0,0,0,0,0,0,0,0,0]
 				]
 
+
 function fireTorpedo() {
 
 	// Your game logic will go here!
