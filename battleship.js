@@ -66,6 +66,11 @@ var gameBoard = [
 
 function fireTorpedo() {
 
-	// Your game logic will go here!
+var userInput = $("#Input").val();
+rowletter = userInput.substing(0,1);
+column = userInput.subsring(1,2);
 
+var row = letterConversion[rowletter]
+
+var battleship = gameBoard[row][column]
 }
