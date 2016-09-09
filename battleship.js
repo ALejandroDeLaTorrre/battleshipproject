@@ -72,5 +72,15 @@ column = userInput.subsring(1,2);
 
 var row = letterConversion[rowletter]
 
-var battleship = gameBoard[row][column]
+var battleship = gameBoard[row][column];
+var myDivstring = "#s" + row + column;
+
+if(battleshipGuess == 1) {
+	var myDivstring = "#s" + row + cloumn;
+	$(myDivstring).css("background-color", "red");
+}
+}
+else {
+	var hitCount = 0;
+}
 }
