@@ -1,7 +1,7 @@
-// sets grid rows and columns and the size of each square
 var rows = 10;
 var cols = 10;
 var squareSize = 50;
+var hitCount = 0;
 
 // gets the container element
 var gameBoardContainer = document.getElementById("gameboard");
@@ -21,8 +21,7 @@ var letterConversion = {
 	"J": 9
 }
 
-var letterArray = ["A", "B", "C", "D","E","F","G","H","I","J"];
-
+var letterArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
 // makes the grid columns and rows
 for (i = 0; i < cols; i++) {
 	for (j = 0; j < rows; j++) {
@@ -36,8 +35,7 @@ for (i = 0; i < cols; i++) {
 		square.className = "boardSquare";
 
 		// THIS IS WHERE YOU WILL ADD CODE FOR PART 1 TO ADD TEXT TO EACH SQUARE
-		square.textContent =  letterArray[j] + (i + 1);
-
+		square.textContent =letterArray[j] + (i + 1);
 
 		// set each grid square's coordinates: multiples of the current row or column number
 		var topPosition = j * squareSize;
@@ -51,36 +49,42 @@ for (i = 0; i < cols; i++) {
 
 // Hardcoded 2D array to indicate where the ships are placed
 var gameBoard = [
-				[0,0,0,1,1,1,1,0,0,0],
+				[1,1,0,0,0,0,0,0,0,0],
 				[0,0,0,0,0,0,0,0,0,0],
 				[0,0,0,0,0,0,0,0,0,0],
-				[0,0,0,0,0,0,1,0,0,0],
-				[0,0,0,0,0,0,1,0,0,0],
-				[1,0,0,0,0,0,1,1,1,1],
+				[0,0,0,1,0,1,0,0,0,0],
+				[0,0,0,1,0,1,0,0,0,0],
+				[0,0,0,1,0,1,0,0,0,0],
+				[0,0,0,1,0,1,0,0,0,0],
+				[1,0,0,1,0,0,0,0,0,0],
 				[1,0,0,0,0,0,0,0,0,0],
-				[1,0,0,1,0,0,0,0,0,0],
-				[1,0,0,1,0,0,0,0,0,0],
-				[1,0,0,0,0,0,0,0,0,0]
+				[1,0,0,0,0,0,0,1,1,1]
 				]
-
 
 function fireTorpedo() {
 
-var userInput = $("#Input").val();
-rowletter = userInput.substing(0,1);
-column = userInput.subsring(1,2);
+var userInput = $("#exampleInput").val();
+var rowLetter = userInput.substring(0,1);
+var column = userInput.substring(1,2) - 1;
 
-var row = letterConversion[rowletter]
+var row = letterConversion[rowLetter];
 
-var battleship = gameBoard[row][column];
-var myDivstring = "#s" + row + column;
+var battleshipGuess = gameBoard[row][column];
+var myDivString = "#s" + row + column;
 
-if(battleshipGuess == 1) {
-	var myDivstring = "#s" + row + cloumn;
-	$(myDivstring).css("background-color", "red");
+console.log("battleshipGuess is " + battleshipGuess);
+console.log("myDivString is " + myDivString);
+
+if (battleshipGuess == 1) {
+	$(myDivString).css("background-color", "red");
+	hitCount = hitCount + 1;
 }
+else  {
+	$(myDivString).css("background-color", "grey");
 }
-else {
-	var hitCount = 0;
+
+if (hitCount == 2) {
+	$("#instructions").text("YOU SUNK ALL MY BATTLESHIPS!");
 }
+
 }
